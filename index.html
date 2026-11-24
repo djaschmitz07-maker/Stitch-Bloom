@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stitch & Bloom — Handmade Crochet Bandanas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #FAF6F0;
+      --bg-card: #FFFFFF;
+      --bg-sand: #F1E9DC;
+      --text-main: #2D2621;
+      --text-muted: #6E6259;
+      --accent-terracotta: #C86D51;
+      --accent-terracotta-dark: #B0583D;
+      --accent-sage: #6A7B64;
+      --border-soft: #E5DCD0;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 10px 30px rgba(45, 38, 33, 0.06);
+      --shadow-hover: 0 16px 36px rgba(45, 38, 33, 0.11);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand-font {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Header & Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(250, 246, 240, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.68rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      text-decoration: none;
+      min-height: 42px;
+    }
+
+    .btn-primary {
+      background: var(--accent-terracotta);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-terracotta-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--text-main);
+      border: 1.5px solid var(--border-soft);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-sand);
+    }
+
+    /* Hero Banner Section */
+    .hero {
+      max-width: 1160px;
+      margin: 2.25rem auto 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--bg-sand);
+      color: var(--accent-sage);
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.2vw, 3.3rem);
+      line-height: 1.12;
+      margin-bottom: 1.1rem;
+      color: var(--text-main);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.03rem;
+      margin-bottom: 1.75rem;
+      max-width: 48ch;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* Uncropped, zoomed-out banner container that adapts to the image */
+    .hero-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: var(--bg-sand);
+      border: 1px solid var(--border-soft);
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      max-height: 490px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .banner-caption {
+      position: absolute;
+      bottom: 0.85rem;
+      right: 0.85rem;
+      background: rgba(45, 38, 33, 0.78);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Section Shared Styles */
+    .page-section {
+      max-width: 1160px;
+      margin: 0 auto 4.75rem;
+      padding: 0 1.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg-sand);
+      color: var(--text-main);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid var(--border-soft);
+    }
+
+    /* Shoppable Bandanas Grid ("People wearing crochet bandanas") */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-img-box {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--bg-sand);
+      cursor: pointer;
+    }
+
+    .card-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .product-card:hover .card-img-box img {
+      transform: scale(1.04);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+
+    .card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1.12rem;
+      color: var(--text-main);
+    }
+
+    .card-price {
+      font-weight: 600;
+      color: var(--accent-terracotta);
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .card-actions .btn {
+      flex: 1;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.86rem;
+    }
+
+    /* Showcase / Lookbook Grid ("Crochet bandanas nobody wearing it") */
+    .showcase-wrapper {
+      background: var(--bg-sand);
+      padding: 4rem 0;
+      margin-bottom: 0;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 1.35rem;
+    }
+
+    .showcase-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+    }
+
+    .showcase-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .showcase-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .showcase-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1.25rem 0.95rem 0.85rem;
+      background: linear-gradient(to top, rgba(35, 29, 25, 0.82), transparent);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+
+    .showcase-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .showcase-badge {
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.22);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+
+    /* Modals & Drawers */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 38, 33, 0.5);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      max-width: 540px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.75rem;
+      position: relative;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      background: var(--bg-sand);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+    }
+
+    /* Cart Drawer */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 38, 33, 0.45);
+      z-index: 60;
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .drawer-overlay.open {
+      display: flex;
+    }
+
+    .cart-drawer {
+      background: var(--bg-card);
+      width: 100%;
+      max-width: 400px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.12);
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+      background: var(--bg-cream);
+      padding: 0.65rem;
+      border-radius: var(--radius-md);
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: var(--bg-sand);
+    }
+
+    .cart-item-info {
+      flex-grow: 1;
+    }
+
+    .cart-item-title {
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .cart-item-price {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .cart-footer {
+      border-top: 1px solid var(--border-soft);
+      padding-top: 1rem;
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text-main);
+      color: #fff;
+      padding: 0.75rem 1.35rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 100;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 90vw;
+      text-align: center;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: var(--bg-cream);
+    }
+
+    /* Tablet & Mobile Responsive Styles */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+        gap: 1.75rem;
+        text-align: center;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .hero-image-wrap {
+        order: -1;
+      }
+      .hero-image-wrap img {
+        max-height: 380px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-container {
+        padding: 0.75rem 1rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+      .nav-links {
+        gap: 0.9rem;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+      .nav-actions .btn {
+        padding: 0.55rem 0.95rem;
+        font-size: 0.85rem;
+      }
+      .hero, .page-section {
+        padding: 0 1rem;
+      }
+      .page-section {
+        margin-bottom: 3.5rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .hero-buttons .btn {
+        width: 100%;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+      }
+      .card-body {
+        padding: 0.85rem;
+      }
+      .card-title-row {
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+      .card-title {
+        font-size: 0.96rem;
+        line-height: 1.3;
+      }
+      .card-price {
+        font-size: 0.92rem;
+      }
+      .card-desc {
+        font-size: 0.8rem;
+        margin-bottom: 0.85rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .card-actions {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .card-actions .btn {
+        width: 100%;
+        padding: 0.5rem 0.65rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+      }
+      .showcase-wrapper {
+        padding: 3rem 0;
+      }
+      .showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+      }
+      .showcase-overlay {
+        padding: 0.85rem 0.65rem 0.65rem;
+      }
+      .showcase-title {
+        font-size: 0.8rem;
+      }
+      .showcase-badge {
+        display: none;
+      }
+      .modal-box {
+        padding: 1.25rem;
+      }
+      .cart-drawer {
+        max-width: 100%;
+        padding: 1.25rem;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .nav-links {
+        display: none;
+      }
+      .product-grid, .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo brand-font">
+        <span>🧶</span> Stitch &amp; Bloom
+      </a>
+      <nav class="nav-links">
+        <a href="#shop">Shop Bandanas</a>
+        <a href="#showcase">Show Gallery</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-primary" id="openCartBtn">
+          Bag (<span id="cartCount">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner Section -->
+  <section class="hero">
+    <div>
+      <span class="hero-badge">100% Hand-Crocheted</span>
+      <h1>Soft cotton bandanas stitched with care.</h1>
+      <p>
+        Lightweight, breathable, and handmade in small batches. Browse our ready-to-wear styles below or explore our flat-lay stitch gallery for custom color inspiration.
+      </p>
+      <div class="hero-buttons">
+        <a href="#shop" class="btn btn-primary">Shop Bandanas</a>
+        <a href="#showcase" class="btn btn-outline">View Show Bandanas</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img
+        src="Crochet bandanas images/This image goes on the banner/This image goes on the banner.jpeg"
+        alt="Featured Handmade Crochet Bandana"
+      >
+      <span class="banner-caption">Featured Collection</span>
+    </div>
+  </section>
+
+  <!-- SECTION 1: Purchasable Bandanas ("People wearing crochet bandanas") -->
+  <main class="page-section" id="shop">
+    <div class="section-header">
+      <div>
+        <h2>Shop Crochet Bandanas</h2>
+        <p>Styled &amp; worn — pick your favorite handmade design and add it to your bag.</p>
+      </div>
+      <span class="section-pill" id="shopCountBadge">14 Styles Available</span>
+    </div>
+
+    <div class="product-grid" id="shopGrid">
+      <!-- Purchasable cards rendered automatically from your folder -->
+    </div>
+  </main>
+
+  <!-- SECTION 2: Show Bandanas ("Crochet bandanas nobody wearing it") -->
+  <section class="showcase-wrapper" id="showcase">
+    <div class="page-section" style="margin-bottom: 0;">
+      <div class="section-header">
+        <div>
+          <h2>Show Bandanas &amp; Stitch Gallery</h2>
+          <p>Close-up flat-lay lookbook of our stitch patterns, scalloped edges, and yarn colorways.</p>
+        </div>
+        <span class="section-pill" id="showcaseCountBadge">7 Show Pieces</span>
+      </div>
+
+      <div class="showcase-grid" id="showcaseGrid">
+        <!-- Show bandana cards rendered automatically from your folder -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="brand-font" style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 0.35rem;">Stitch &amp; Bloom Crochet</p>
+    <p>Handmade cotton hair kerchiefs &amp; bandanas • Custom color requests welcome</p>
+  </footer>
+
+  <!-- Quick View / Detail Modal -->
+  <div class="overlay" id="detailModal">
+    <div class="modal-box">
+      <button class="close-btn" id="closeDetailBtn" aria-label="Close">&times;</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <!-- Shopping Bag Drawer -->
+  <div class="drawer-overlay" id="cartDrawer">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3 style="font-size: 1.35rem;">Your Bag</h3>
+        <button class="close-btn" id="closeCartBtn" style="position: static;">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItemsContainer"></div>
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <button class="btn btn-primary" id="checkoutBtn" style="width: 100%;">
+          Checkout Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Added to your bag!</div>
+
+  <script>
+    /**
+     * FOLDER CONFIGURATION
+     * Place this HTML file right next to "Crochet bandanas images".
+     */
+    const FOR_SALE_FOLDER = "Crochet bandanas images/People wearing crochet bandanas/";
+    const SHOWCASE_FOLDER = "Crochet bandanas images/Crochet bandanas nobody wearing it/";
+
+    // 1. Purchasable Bandanas ("People wearing crochet bandanas")
+    // Exact 14 filenames from your folder
+    const purchasableBandanas = [
+      {
+        id: "sale-1",
+        file: "images (2).jpg",
+        name: "Sunburst Bloom Granny Kerchief",
+        price: 28.00,
+        tag: "Bestseller",
+        desc: "Hand-stitched floral granny square bandana with soft cotton tie straps."
+      },
+      {
+        id: "sale-2",
+        file: "CAC0101-035975M-1.jpg",
+        name: "Pastel Meadow Colorblock Tie",
+        price: 24.00,
+        tag: "Colorblock",
+        desc: "Airy pastel stripes crocheted in lightweight, breathable cotton yarn."
+      },
+      {
+        id: "sale-3",
+        file: "8E413CC1-63C9-4EC5-9EF9-DBB271DFA97A.jpg",
+        name: "Emerald Lace Motif Bandana",
+        price: 27.00,
+        tag: "Artisan Lace",
+        desc: "Intricate floral crochet motifs joined into a classic vintage head kerchief."
+      },
+      {
+        id: "sale-4",
+        file: "il_1080xN.8029221005_kfcy.jpg",
+        name: "Lavender Daisy Puff Bandana",
+        price: 28.00,
+        tag: "Floral Stitch",
+        desc: "Delicate daisy-stitch crochet triangle kerchief with braided tie cords."
+      },
+      {
+        id: "sale-5",
+        file: "il_570xN.5572932871_c3jh.jpg",
+        name: "Rosewater & Sage Granny Tie",
+        price: 25.00,
+        tag: "Cottagecore",
+        desc: "Soft multicolor granny cluster kerchief trimmed with a scalloped border."
+      },
+      {
+        id: "sale-6",
+        file: "98413-bandana_2319-hero.jpg",
+        name: "Fluffy Cloud Granny Kerchief",
+        price: 29.00,
+        tag: "Limited Edition",
+        desc: "Playful cloud-motif granny square bandana with soft adjustable ties."
+      },
+      {
+        id: "sale-7",
+        file: "7d0d0aeb5ff4ef170ec82b3172a68fab.jpg",
+        name: "Moss Sage Lace Tie Kerchief",
+        price: 27.00,
+        tag: "Artisan Lace",
+        desc: "Botanical open-lacework triangle kerchief finished with scalloped edging."
+      },
+      {
+        id: "sale-8",
+        file: "images (1).jpg",
+        name: "Mulberry Wine Shell Kerchief",
+        price: 25.00,
+        tag: "Rich Tones",
+        desc: "Deep berry open-shell crochet bandana made from 100% soft cotton."
+      },
+      {
+        id: "sale-9",
+        file: "il_fullxfull.5572916399_apd2.jpg",
+        name: "Garden Patchwork Granny Wrap",
+        price: 26.00,
+        tag: "Handmade Classic",
+        desc: "Cozy heirloom granny-stitch kerchief with a delicate picot trim."
+      },
+      {
+        id: "sale-10",
+        file: "2crochetheadscarf-683x1024-1.jpg",
+        name: "Peachy Oat Striped Headscarf",
+        price: 23.00,
+        tag: "Headband Style",
+        desc: "Open-mesh striped crochet headwrap with extra-long ribbon tie tails."
+      },
+      {
+        id: "sale-11",
+        file: "images.jpg",
+        name: "Cinnamon Spice Open-Weave",
+        price: 23.00,
+        tag: "Everyday",
+        desc: "Warm earthy cotton mesh kerchief designed for effortless daily wear."
+      },
+      {
+        id: "sale-12",
+        file: "08e66c53d2303fee2db3b0e29aa1878c.jpg",
+        name: "Pebble Gray Scallop Kerchief",
+        price: 22.00,
+        tag: "Petite & Adult",
+        desc: "Soft neutral cotton triangle bandana finished with a dainty scalloped edge."
+      },
+      {
+        id: "sale-13",
+        file: "easy-crochet-bandana-edited-1-scaled.jpg",
+        name: "Vanilla Cream Scallop Wrap",
+        price: 26.00,
+        tag: "Boho Classic",
+        desc: "Wide granny-cluster head kerchief in warm vanilla cream with scalloped border."
+      },
+      {
+        id: "sale-14",
+        file: "img_6788-1.jpg",
+        name: "Eucalyptus Mist Picot Bandana",
+        price: 24.00,
+        tag: "Minimalist",
+        desc: "Soft dusty eucalyptus cotton mesh bandana trimmed with a subtle picot edge."
+      }
+    ];
+
+    // 2. Show Bandanas ("Crochet bandanas nobody wearing it")
+    // Exact 7 filenames from your folder
+    const showBandanas = [
+      {
+        id: "show-1",
+        file: "8afda7e974155a07fd6bdc53976f25e3.jpg",
+        name: "Dusty Blue & Peach Scallop Duo",
+        note: "Showcase flat-lay • Open-mesh diamond stitch with scalloped border"
+      },
+      {
+        id: "show-2",
+        file: "images (1).jpg",
+        name: "Terracotta Fan Lace Kerchief",
+        note: "Showcase flat-lay • Intricate shell-and-fan lacework in rust cotton"
+      },
+      {
+        id: "show-3",
+        file: "IMG_7981_jpg.jpg",
+        name: "Orchid & Oat Bobble Stitch",
+        note: "Showcase flat-lay • Waffle-textured weave with raised bobble edging"
+      },
+      {
+        id: "show-4",
+        file: "6-6-878x1024.jpg",
+        name: "Sandstone & Ivory Granny Kerchief",
+        note: "Showcase flat-lay • Airy granny cluster stitch with picot points"
+      },
+      {
+        id: "show-5",
+        file: "crochet-bandana-pattern-1.jpg",
+        name: "Vintage Scallop Bow Bandana",
+        note: "Showcase flat-lay • Delicate shell-edge kerchief with long ribbon ties"
+      },
+      {
+        id: "show-6",
+        file: "sarahmaker-crochet-bandana-9-735x919.jpg",
+        name: "Forest Sage & Cream Picot Tie",
+        note: "Showcase flat-lay • Granny-stitch triangle bordered with shell scallops"
+      },
+      {
+        id: "show-7",
+        file: "images.jpg",
+        name: "Natural Raw Cotton Classic",
+        note: "Showcase flat-lay • Timeless unbleached oatmeal cotton granny weave"
+      }
+    ];
+
+    let cart = [];
+
+    const shopGrid = document.getElementById("shopGrid");
+    const showcaseGrid = document.getElementById("showcaseGrid");
+    const detailModal = document.getElementById("detailModal");
+    const detailContent = document.getElementById("detailContent");
+    const cartDrawer = document.getElementById("cartDrawer");
+    const toastEl = document.getElementById("toast");
+
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      setTimeout(() => toastEl.classList.remove("show"), 2600);
+    }
+
+    function getSaleImageSrc(item) {
+      return FOR_SALE_FOLDER + item.file;
+    }
+
+    function getShowImageSrc(item) {
+      return SHOWCASE_FOLDER + item.file;
+    }
+
+    // Render Purchasable Bandanas
+    function renderShop() {
+      document.getElementById("shopCountBadge").textContent = `${purchasableBandanas.length} Styles Available`;
+
+      shopGrid.innerHTML = purchasableBandanas.map(item => `
+        <article class="product-card">
+          <div class="card-img-box" onclick="openSaleDetail('${item.id}')">
+            <span class="card-tag">${item.tag}</span>
+            <img src="${getSaleImageSrc(item)}" alt="${item.name}">
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <h3 class="card-title">${item.name}</h3>
+              <span class="card-price">$${item.price.toFixed(2)}</span>
+            </div>
+            <p class="card-desc">${item.desc}</p>
+            <div class="card-actions">
+              <button class="btn btn-outline" onclick="openSaleDetail('${item.id}')">Details</button>
+              <button class="btn btn-primary" onclick="addToCart('${item.id}')">Add to Bag</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // Render Show Bandanas
+    function renderShowcase() {
+      document.getElementById("showcaseCountBadge").textContent = `${showBandanas.length} Show Pieces`;
+
+      showcaseGrid.innerHTML = showBandanas.map(item => `
+        <div class="showcase-card" onclick="openShowDetail('${item.id}')">
+          <img src="${getShowImageSrc(item)}" alt="${item.name}">
+          <div class="showcase-overlay">
+            <span class="showcase-title">${item.name}</span>
+            <span class="showcase-badge">Show Piece</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // Modal for Purchasable Bandanas
+    window.openSaleDetail = function(id) {
+      const item = purchasableBandanas.find(b => b.id === id);
+      if (!item) return;
+
+      detailContent.innerHTML = `
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; margin-bottom: 1.25rem; background: var(--bg-sand);">
+          <img src="${getSaleImageSrc(item)}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h2 style="font-size: 1.5rem;">${item.name}</h2>
+          <span style="font-size: 1.25rem; font-weight: 600; color: var(--accent-terracotta);">$${item.price.toFixed(2)}</span>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">${item.desc}</p>
+        <ul style="color: var(--text-muted); font-size: 0.88rem; margin-left: 1.2rem; margin-bottom: 1.35rem;">
+          <li>100% soft breathable cotton yarn</li>
+          <li>One size fits most with adjustable crochet ties</li>
+          <li>Hand wash cold &amp; lay flat to dry</li>
+        </ul>
+        <button class="btn btn-primary" style="width: 100%;" onclick="addToCart('${item.id}'); detailModal.classList.remove('open');">
+          Add to Bag — $${item.price.toFixed(2)}
+        </button>
+      `;
+      detailModal.classList.add("open");
+    };
+
+    // Modal for Show Bandanas
+    window.openShowDetail = function(id) {
+      const item = showBandanas.find(b => b.id === id);
+      if (!item) return;
+
+      detailContent.innerHTML = `
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; margin-bottom: 1.2rem; background: var(--bg-sand);">
+          <img src="${getShowImageSrc(item)}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+          <h2 style="font-size: 1.45rem;">${item.name}</h2>
+          <span class="section-pill">Show Bandana</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.94rem;">
+          ${item.note}. Want this pattern made in custom colors? Browse our ready-to-ship styles above!
+        </p>
+      `;
+      detailModal.classList.add("open");
+    };
+
+    document.getElementById("closeDetailBtn").addEventListener("click", () => {
+      detailModal.classList.remove("open");
+    });
+
+    // Shopping Bag Logic
+    window.addToCart = function(id) {
+      const existing = cart.find(c => c.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        const item = purchasableBandanas.find(b => b.id === id);
+        if (item) cart.push({ ...item, qty: 1 });
+      }
+      updateCartUI();
+      showToast("Added bandana to your bag!");
+    };
+
+    window.changeQty = function(id, delta) {
+      const idx = cart.findIndex(c => c.id === id);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+      updateCartUI();
+    };
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+      document.getElementById("cartCount").textContent = count;
+      document.getElementById("cartSubtotal").textContent = `$${subtotal.toFixed(2)}`;
+
+      const container = document.getElementById("cartItemsContainer");
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="color: var(--text-muted); text-align: center; margin-top: 2rem;">Your bag is currently empty.</p>`;
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${getSaleImageSrc(item)}" alt="${item.name}">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.name}</div>
+            <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
+          </div>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+            <span style="font-size: 0.9rem; font-weight: 600; min-width: 16px; text-align: center;">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("openCartBtn").addEventListener("click", () => {
+      updateCartUI();
+      cartDrawer.classList.add("open");
+    });
+
+    document.getElementById("closeCartBtn").addEventListener("click", () => {
+      cartDrawer.classList.remove("open");
+    });
+
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      if (cart.length === 0) {
+        showToast("Your bag is empty!");
+        return;
+      }
+      cart = [];
+      updateCartUI();
+      cartDrawer.classList.remove("open");
+      showToast("Order received! Thank you for supporting handmade.");
+    });
+
+    // Close modals when clicking outside
+    [detailModal, cartDrawer].forEach(el => {
+      el.addEventListener("click", (e) => {
+        if (e.target === el) el.classList.remove("open");
+      });
+    });
+
+    // Initial render
+    renderShop();
+    renderShowcase();
+  </script>
+</body>
+</html>
